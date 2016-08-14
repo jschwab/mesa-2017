@@ -1,0 +1,10 @@
+*.data
+*.log
+*.o
+*/LOGS*/
+*/make/*.mod
+*/photos*/
+.restart
+binary
+star
+
