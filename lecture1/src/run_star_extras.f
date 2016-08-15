@@ -29,6 +29,8 @@
 
       implicit none
 
+      real(dp) :: total_extra_energy
+
       ! these routines are called by the standard run_star check_model
       contains
 
@@ -101,6 +103,7 @@
          extras_startup = 0
          if (.not. restart) then
             call alloc_extra_info(s)
+            total_extra_energy = 0
          else ! it is a restart
             call unpack_extra_info(s)
          end if
@@ -218,6 +221,10 @@
          extras_finish_step = keep_going
          call store_extra_info(s)
 
+         ! track the total amount of energy added
+         total_extra_energy = total_extra_energy + &
+              dot_product(s% dm(1:s% nz), s% extra_heat(1:s% nz)) * s% dt
+
          ! calculate blackbody temperature of earth
          Tearth = s% Teff * sqrt(s% photosphere_r * Rsun / (2.0 * AU))
          write(*,*) "Tearth =", Tearth
@@ -243,6 +250,9 @@
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
+
+         write(*,*) 'Energy added (ergs): ', total_extra_energy
+
       end subroutine extras_after_evolve
 
 
@@ -288,8 +298,9 @@
          ! call move_int or move_flg
          num_ints = i
 
-         i = 0
+         i = 1
          ! call move_dbl
+         call move_dbl(total_extra_energy)
 
          num_dbls = i
 
