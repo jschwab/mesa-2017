@@ -1,0 +1,24 @@
+&binary_job
+
+  inlist_names(1) = 'inlist1'
+  inlist_names(2) = 'inlist2'
+
+  evolve_both_stars = .true.
+
+/ ! end of binary_job namelist
+
+&binary_controls
+
+  initial_period_in_days = 0.027777777777777778d0 ! 40min !
+
+  do_jdot_mb = .false.
+  do_jdot_gr = .true.
+  do_jdot_ml = .true.
+  do_jdot_ls = .true.
+
+  terminal_interval = 5
+  write_header_frequency = 1
+
+  extra_binary_terminal_output_file = 'binary.log'
+
+/ ! end of binary_controls namelist

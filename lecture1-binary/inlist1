@@ -1,0 +1,58 @@
+&star_job
+
+  load_saved_model = .true.
+  saved_model_name = 'HeStar_0.4Msun.mod'
+
+  set_initial_age = .true.
+  initial_age = 0 ! in years
+
+  set_initial_model_number = .true.
+  initial_model_number = 0
+
+  pgstar_flag = .false.
+
+/ ! end of star_job namelist
+
+
+&controls
+
+  extra_terminal_output_file = 'star1.log'
+  photo_directory = 'photos1'
+  log_directory = 'LOGS1'
+
+  profile_interval = 50
+  history_interval = 1
+  terminal_interval = 5
+  write_header_frequency = 1
+
+  max_model_number = 10
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+  History_Panels1_win_flag = .true.
+  History_Panels1_win_width = 5
+  History_Panels1_win_aspect_ratio = 1.0 ! aspect_ratio = height/width
+
+  History_Panels1_title = 'Orbital evolution'
+  History_Panels1_num_panels = 2
+
+  History_Panels1_yaxis_name(1) = 'period_days'
+  History_Panels1_other_yaxis_name(1) = 'lg_mstar_dot_1'
+  History_Panels1_yaxis_name(2) = 'Jdot'
+  History_Panels1_other_yaxis_name(2) = 'binary_separation'
+
+
+  History_Track1_win_flag = .true.
+  History_Track1_title = 'P vs t'
+  History_Track1_xname = 'age'
+  History_Track1_yname = 'period_days'
+  History_Track1_xaxis_label = 't (years)'
+  History_Track1_yaxis_label = 'P (days)'
+  History_Track1_log_xaxis = .false. ! show log10 of abs value
+  History_Track1_log_yaxis = .true. ! show log10 of abs value
+  History_Track1_reverse_xaxis = .false.
+
+/ ! end of pgstar namelist

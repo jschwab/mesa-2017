@@ -1,0 +1,44 @@
+&star_job
+
+  load_saved_model = .true.
+  saved_model_name = 'wd_0.8Msun.mod'
+
+  change_net = .true.
+  new_net_name = 'co_burn.net'
+
+  set_rate_3a = 'FL87' ! Fushiki and Lamb, Apj, 317, 368-388, 1987
+  set_rate_1212 = 'G05' ! Gasques, et al. Phys Review C, 72, 025806, 2005
+
+  change_v_flag = .true.
+  new_v_flag = .true.
+
+  set_tau_factor = .true.
+  set_to_this_tau_factor = 300
+
+  set_initial_age = .true.
+  initial_age = 0 ! in years
+
+  set_initial_model_number = .true.
+  initial_model_number = 0
+
+/ ! end of star_job namelist
+
+
+&controls
+
+  extra_terminal_output_file = 'star2.log'
+  photo_directory = 'photos2'
+  log_directory = 'LOGS2'
+
+  profile_interval = 50
+  history_interval = 1
+  terminal_interval = 5
+  write_header_frequency = 1
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+
+/ ! end of pgstar namelist
