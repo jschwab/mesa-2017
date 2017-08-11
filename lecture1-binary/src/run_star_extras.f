@@ -100,6 +100,7 @@
             return
          end if
 
+         write(*,*) 'check model for star', id
 
          ! if you want to check multiple conditions, it can be useful
          ! to set a different termination code depending on which
@@ -193,6 +194,8 @@
          if (ierr /= 0) return
          extras_finish_step = keep_going
          call store_extra_info(s)
+
+         write(*,*) 'finish step for star', id
 
          ! to save a profile, 
             ! s% need_to_save_profiles_now = .true.

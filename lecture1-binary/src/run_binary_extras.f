@@ -112,7 +112,9 @@
             return
          end if  
          extras_binary_check_model = keep_going
-        
+
+         write(*,*) 'check model for binary'
+
       end function extras_binary_check_model
       
       
@@ -127,7 +129,9 @@
             return
          end if  
          extras_binary_finish_step = keep_going
-         
+
+         write(*,*) 'finish step for binary'
+
       end function extras_binary_finish_step
       
       subroutine extras_binary_after_evolve(binary_id, ierr)
